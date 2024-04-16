@@ -4,7 +4,6 @@ import encryption
 import hashing
 import metadata
 
-print("Texto de ejemplo")
 def main():
     while True:
         print("\nMenú:")
