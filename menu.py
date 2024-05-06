@@ -1,7 +1,3 @@
-"""
-Importamos los modulos 'menwebs' y  'menuverify', estos son modulos
-personalizados que contienen funciones para realizar oprraciones específicas
-"""
 import menuwebs 
 import menuverify
 #imports
