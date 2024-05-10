@@ -61,7 +61,11 @@ def conexion_request(url_nueva):
         for hi in hipervinculos:
             link = hi.get("href")
             if link:
-                f.write(link + "\n")
+                if link.startswith("https://") or link.startswith("http://"):
+            # Verificar si el enlace termina con alguna de las extensiones de archivo
+                    extensiones_archivo = ['.com', '.mx', '.com.mx', 'co']
+                    if any(link.endswith(ext) for ext in extensiones_archivo):
+                        f.write(link + "\n")
         print("Se guardaron correctamente los hipervinculos")
 
     """Encuentra todos los hipervínculos en la página y verifica si apuntan a archivos PDF. Si lo hacen, descarga los PDFs y los guarda en el directorio PDFs."""
