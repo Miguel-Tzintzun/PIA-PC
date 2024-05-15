@@ -4,6 +4,7 @@ import os
 import json
 import logging
 from datetime import datetime
+import time
 
 def IHBP():
     # Configuración de logging
@@ -37,6 +38,11 @@ def IHBP():
     directorio_vulnerabilidades = 'vulnerabilidades'
     if not os.path.exists(directorio_vulnerabilidades):
         os.makedirs(directorio_vulnerabilidades)
+
+    # Temporizador de 7 segundos
+    print("Bienvenido al programa de consulta de vulnerabilidades.")
+    print("El programa se iniciará en 7 segundos.")
+    time.sleep(7)
 
     # Registro del correo ingresado y la hora de la consulta
     correo = input("Ingrese el correo electrónico que desea investigar: ")
@@ -74,6 +80,10 @@ def IHBP():
         print("*    ^    *")
         print(" *  \_/  * ")
         print("   *****   ")
+
+# Llamada a la función
+IHBP()
+
 
 
 
