@@ -1,28 +1,38 @@
 """
-NOTA: El csv lo genera dentro de la carpeta que estamos buscando y el html en la carpeta de imagenes
+NOTA: El csv lo genera dentro de la carpeta 
+que estamos buscando y el html en la carpeta de imagenes
 """
 import os
 from PIL import Image
 from PIL.ExifTags import GPSTAGS, TAGS
 import gmplot
 import csv
-#Función que nos ayudara a hacer el html de las ubicaciones y el link individual
+#Función que nos ayudara a hacer el html de las ubicaciones
+
+
 def google_maps(gps_coords,cc):
     dec_deg_lat = convert_decimal_degrees(float(gps_coords["lat"][0]),  float(gps_coords["lat"][1]), float(gps_coords["lat"][2]), gps_coords["lat_ref"])
     dec_deg_lon = convert_decimal_degrees(float(gps_coords["lon"][0]),  float(gps_coords["lon"][1]), float(gps_coords["lon"][2]), gps_coords["lon_ref"])
     cc.update({dec_deg_lat: dec_deg_lon})
     mapa = gmplot.GoogleMapPlotter(0, 0, 12)
+
     for  latitud, longitud in cc.items():
+
      mapa.marker(latitud, longitud, "#ff0000")
      mapa.draw("mapa.html")
     return f"https://maps.google.com/?q={dec_deg_lat},{dec_deg_lon}"
 
-#Función que nos permite convertir a grados decimales  
+
+#Función que nos permite convertir a grados decimales
+  
+
+
 def convert_decimal_degrees(degree, minutes, seconds, direction):
     decimal_degrees = degree + minutes / 60 + seconds / 3600
     if direction == "S" or direction == "W":
         decimal_degrees *= -1
     return decimal_degrees
+
 
 def extract_metadata():
     cc = {}   
@@ -32,7 +42,7 @@ def extract_metadata():
     if len(files) == 0:
         print('No tienes archivos en esta carpeta')
         return
-    
+  
     with open("../metadata_info.csv", "a", newline="") as csv_file:
         writer = csv.writer(csv_file)
         
