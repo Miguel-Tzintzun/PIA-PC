@@ -1,12 +1,13 @@
 import random
 import requests
 import os
-import json
 import logging
 from datetime import datetime
 import time
 
+
 def IHBP():
+
     # Configuración de logging
     log_format = '%(asctime)s - %(levelname)s - %(message)s'
     log_file = 'consulta_correos.log'
@@ -14,23 +15,30 @@ def IHBP():
 
     api_key = 'a088638961ba4831aa70ea60271ab16b'
 
+
     def get_vul(correo):
         try:
+
             url_api = "https://haveibeenpwned.com/api/v3/breachedaccount/" + correo
             headers = {
+
                 "hibp-api-key": api_key 
+
             }
             
-            response = requests.get(url_api, headers=headers)
-            response.raise_for_status()  # Esto generará una excepción si la solicitud falla
+            response = requests.get(url_api, headers = headers)
+            response.raise_for_status()  # Esto generará una excepción
             if response.status_code == 200: 
                 return response.json()
+
             elif response.status_code == 404:
-                print("La API no encontró ninguna información para este correo.")
+                print("La API no encontró ninguna información.")
                 return None
+
             else:
                 print(f"Error al realizar la solicitud a la API. Código de estado: {response.status_code}")
                 return None
+
         except requests.exceptions.RequestException as e:
             print(f"Error al conectarse a la API: {e}")
             return None
@@ -51,12 +59,13 @@ def IHBP():
     vul = get_vul(correo)
 
     if vul:
+
         print("Se han encontrado vulnerabilidades en el correo")
         with open(f"{directorio_vulnerabilidades}/Vulnerabilidades.txt", "a") as file:
             file.write(f"Correo vulnerado: {correo}\n")
             for vulne in vul:
                 print(vulne['Name'])
-                file.write(f"- {vulne['Name']}\n")
+                file.write(f" - {vulne['Name']}\n")
 
             # Generar contraseñas sugeridas
             minusculas = "abcdefghijklmnopqrstuvwxyz"
@@ -73,6 +82,7 @@ def IHBP():
                 print("Podrías cambiar tu contraseña por:", contraseña)
 
     else:
+
         print(f"No se ha encontrado vulnerabilidades para: {correo}")
         print("   *****   ")
         print(" *       * ")
@@ -80,13 +90,5 @@ def IHBP():
         print("*    ^    *")
         print(" *  \_/  * ")
         print("   *****   ")
-
-# Llamada a la función
-IHBP()
-
-
-
-
-
 
 
