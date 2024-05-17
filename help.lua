@@ -1,4 +1,4 @@
-usage: arg.py [-h] [-w] [-u URL] [-p] [-m] [-hp] [-a]
+usage: main.py [-h] [-w] [-u URL] [-p] [-m] [-hp] [-a]
 
 Este es un programa con varias opciones.
 
