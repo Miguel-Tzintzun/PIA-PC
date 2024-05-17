@@ -20,12 +20,8 @@ def check_ports(ip_address):
         except Exception as e:
             results.append((port, "Error"))
     return results
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Uso: python ScanPorts.py <dirección_IP>")
-        sys.exit(1)
-    ip_address = sys.argv[1]
-    results = check_ports(ip_address)
-    for port, status in results:
-        print(f"Puerto {port}: {status}")
+    
+ip_address = sys.argv[1]
+results = check_ports(ip_address)
+for port, status in results:
+    print(f"Puerto {port}: {status}")
