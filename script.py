@@ -33,4 +33,4 @@ def script():
             pyautogui.press("enter")
 
     else:
-        print("ERROR!!! Hay que insertar un número del 1 al 3")
+        print("ERROR!!! Hay que insertar un número del 1 al 2")
