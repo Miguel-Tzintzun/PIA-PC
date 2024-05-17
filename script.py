@@ -2,7 +2,6 @@ import webbrowser
 import pyperclip
 import pyautogui
 import time
-from colorama import Style
 
 
 def script():
