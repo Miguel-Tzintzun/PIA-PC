@@ -11,7 +11,7 @@ def script():
     eleccion = input("Escribe el número de la herramienta que quieras utilizar para analizar las direcciones IP: "
     """\n
     1 - Symantec
-    2 - Virustotal: \n""" + Style.RESET_ALL + "¿Cuál es tu elección? --> ")
+    2 - Virustotal: \n""" "¿Cuál es tu elección? --> ")
 
     if eleccion=="1":
         for ip in documento:
